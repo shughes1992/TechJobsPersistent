@@ -1,4 +1,5 @@
-﻿
+﻿@model TechJobsPersistent.ViewModels.AddJobViewModel;
+
 
 <h1>Add a Job</h1>
 
@@ -8,7 +9,27 @@
         <input class="form-control" />
         <span></span>
     </div>
+    <div class="form-group">
+        <label>Location</label>
+        <input class="form-control" />
+        <span></span>
+    </div>
 
     <input type="submit" value="Add Job" />
 </form>
 
+@*\In AddJob.cshtml,
+    add a new <div class="form-group"> element to the form.
+    Add the appropriate <label> and <input> --
+    tags to the new <div> element
+    to create the form field
+    to add employer information to the job.
+
+    ***name & location?
+
+     This field should be a dropdown menu
+    with all of the employers in the database.
+
+    In addition, add a link to the <div> element to add new employers.
+    This way, if a user doesn’t see the employer they are looking for,
+    they can easily click on the link and add a new employer to the database.*@

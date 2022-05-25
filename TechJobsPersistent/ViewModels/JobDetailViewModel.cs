@@ -2,6 +2,9 @@
 using TechJobsPersistent.Models;
 using System.Collections.Generic;
 
+//This model has properties for SELECTED employer's info and SELECTED skills info
+//check out ListController and SearchController to view in action
+
 namespace TechJobsPersistent.ViewModels
 {
     public class JobDetailViewModel
