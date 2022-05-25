@@ -2,7 +2,7 @@
 
 Jobs Table:
 Id : INT
-Name : TEXT
+Name : String
 EmployerId : INT
 
 
