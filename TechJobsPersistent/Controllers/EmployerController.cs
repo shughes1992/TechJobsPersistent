@@ -32,19 +32,19 @@ namespace TechJobsPersistent.Controllers
             return View(employers);
         }
 
-        public IActionResult Add(AddEmployerViewModel viewModel)
-        {
-            return View(viewModel);
-        }
 
+        public IActionResult Add()
+        {
+            AddEmployerViewModel viewModel = new AddEmployerViewModel();
+            return View(viewModel);
+
+        }
 
 
         public IActionResult ProcessAddEmployerForm()
         {
             return View();
         }
-
-
 
 
         public IActionResult About(int id)

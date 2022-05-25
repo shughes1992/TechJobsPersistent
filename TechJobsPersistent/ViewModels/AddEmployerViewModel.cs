@@ -8,6 +8,10 @@ namespace TechJobsPersistent.ViewModels
 {
     public class AddEmployerViewModel
     {
+        public AddEmployerViewModel()
+        {
+        }
+
         public AddEmployerViewModel(Employer employer)
         {
             Employer = employer;
