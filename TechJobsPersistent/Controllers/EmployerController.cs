@@ -41,11 +41,17 @@ namespace TechJobsPersistent.Controllers
         }
 
 
-        public IActionResult ProcessAddEmployerForm()
+        public IActionResult ProcessAddEmployerForm(Employer employer)
         {
-            return View();
-        }
+            if (ModelState.IsValid)
+            {
+                context.Employers.Add(employer);
+                context.SaveChanges();
+                return Redirect("/Employer/");
+            }
 
+            return View("Add", employer);
+        }
 
         public IActionResult About(int id)
         {
