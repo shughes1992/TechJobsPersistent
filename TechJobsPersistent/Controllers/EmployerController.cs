@@ -40,7 +40,7 @@ namespace TechJobsPersistent.Controllers
 
         }
 
-
+       //below is an action METHOD
         public IActionResult ProcessAddEmployerForm(AddEmployerViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -61,8 +61,9 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult About(int id)
         {
-            List<Employer> employers = context.Employers.ToList();
-            return View(employers);
+            //.find = method that atkes an ID & searches through database for the given ID
+            Employer employer = context.Employers.Find(id);
+            return View(employer);
         }
     }
 }

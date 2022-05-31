@@ -17,6 +17,8 @@ namespace TechJobsPersistent.Controllers
     {
         private JobDbContext context;
 
+        public List<JobSkill> JobSkills { get; private set; }
+
         public HomeController(JobDbContext dbContext)
         {
             context = dbContext;
@@ -35,31 +37,40 @@ namespace TechJobsPersistent.Controllers
             List<Employer> employers = context.Employers.ToList();
             List<Skill> skills = context.Skills.ToList();
 
-            AddJobViewModel viewModel = new AddJobViewModel(employers);
+            AddJobViewModel viewModel = new AddJobViewModel(employers, skills);
             return View(viewModel);
 
         }
 
-        public IActionResult ProcessAddJobForm(AddJobViewModel viewModel)
+        public IActionResult ProcessAddJobForm(AddJobViewModel viewModel, string[] selectedSkills)
         {
+
             if (ModelState.IsValid)
             {
-                string name = viewModel.Name;
-                int employerId = viewModel.EmployerId;
-
-                Employer employer = context.Employers.Find(employerId);
-
-                Job newjob = new Job(name, employer);
-                context.Jobs.Add(newjob);
-
+                Job newJob = new Job
+                {
+                    Name = viewModel.Name,
+                    EmployerId = viewModel.EmployerId
+                };
+                //selectedSkills is an array of all the id's of skills that were checked in form after submission 
+                foreach (string skillId in selectedSkills)
+                {
+                    JobSkill jobSkill = new JobSkill
+                    {
+                        Job = newJob,
+                        JobId = newJob.Id,
+                        SkillId = Int32.Parse(skillId)
+                    };
+                    context.JobSkills.Add(jobSkill);
+                }
+                //need help with pairing in jobskills table (in database)
+                context.Jobs.Add(newJob);
                 context.SaveChanges();
                 return Redirect("/Home");
-
             }
 
-            return View("AddJob", viewModel);
+            return View(viewModel);
         }
-
 
         public IActionResult Detail(int id)
         {

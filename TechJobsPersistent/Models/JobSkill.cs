@@ -14,3 +14,6 @@ namespace TechJobsPersistent.Models
         }
     }
 }
+
+//a model to take job / skill id & join them togthere
+//pairing of the 2

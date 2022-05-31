@@ -51,7 +51,9 @@ namespace TechJobsPersistent.Controllers
         {
             Job theJob = context.Jobs.Find(id);
             List<Skill> possibleSkills = context.Skills.ToList();
+
             AddJobSkillViewModel viewModel = new AddJobSkillViewModel(theJob, possibleSkills);
+
             return View(viewModel);
         }
 
